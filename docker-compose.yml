@@ -88,11 +88,12 @@ services:
 
   redis:
     container_name: leopard-redis
-    build:
-      context: .
-      dockerfile: ./docker/redis/Dockerfile
+    image: redis:6.2.3-alpine
     ports:
-      - target: 6379
-        published: ${REDIS_PORT:-6379}
-        protocol: tcp
-        mode: host
+      - "6379:6379"
+
+  mailhog:
+    container_name: leopard-mailhog
+    image: mailhog/mailhog:latest
+    ports:
+      - "8025:8025"
