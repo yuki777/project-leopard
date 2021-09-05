@@ -1,0 +1,87 @@
+version: "3.9"
+
+volumes:
+  php-fpm-socket:
+  mysql-store:
+  postgres-store:
+
+services:
+
+  php:
+    container_name: leopard-php
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    volumes:
+      - type: volume
+        source: php-fpm-socket
+        target: /var/run/php-fpm
+        volume:
+          nocopy: true
+      - type: bind
+        source: .
+        target: /app
+
+  nginx:
+    container_name: leopard-nginx
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - target: 80
+        published: ${WEB_PORT:-80}
+        protocol: tcp
+        mode: host
+    volumes:
+      - type: volume
+        source: php-fpm-socket
+        target: /var/run/php-fpm
+        volume:
+          nocopy: true
+      - type: bind
+        source: .
+        target: /app
+
+  mysql:
+    container_name: leopard-mysql
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    ports:
+      - target: 3306
+        published: ${DB_PORT:-3306}
+        protocol: tcp
+        mode: host
+    volumes:
+      - type: volume
+        source: mysql-store
+        target: /var/lib/mysql
+        volume:
+          nocopy: true
+    environment:
+      - MYSQL_DATABASE=${DB_NAME:-laravel_local}
+      - MYSQL_USER=${DB_USER:-phper}
+      - MYSQL_PASSWORD=${DB_PASS:-secret}
+      - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
+
+  #postgres:
+  #  container_name: leopard-postgres
+  #  build:
+  #    context: .
+  #    dockerfile: ./docker/postgres/Dockerfile
+  #  ports:
+  #    - target: 5432
+  #      published: ${DB_PORT:-5432}
+  #      protocol: tcp
+  #      mode: host
+  #  volumes:
+  #    - type: volume
+  #      source: postgres-store
+  #      target: /var/lib/postgresql/data
+  #      volume:
+  #        nocopy: true
+  #  environment:
+  #    - POSTGRES_DB=${DB_NAME:-laravel_local}
+  #    - POSTGRES_USER=${DB_USER:-phper}
+  #    - POSTGRES_PASSWORD=${DB_PASS-secret}
+  #    - PGDATA=/var/lib/postgresql/data
