@@ -42,46 +42,46 @@ services:
         source: .
         target: /app
 
-  mysql:
-    container_name: leopard-mysql
+  postgres:
+    container_name: leopard-postgres
     build:
       context: .
-      dockerfile: ./docker/mysql/Dockerfile
+      dockerfile: ./docker/postgres/Dockerfile
     ports:
-      - target: 3306
-        published: ${DB_PORT:-3306}
+      - target: 5432
+        published: ${DB_PORT:-5432}
         protocol: tcp
         mode: host
     volumes:
       - type: volume
-        source: mysql-store
-        target: /var/lib/mysql
+        source: postgres-store
+        target: /var/lib/postgresql/data
         volume:
           nocopy: true
     environment:
-      - MYSQL_DATABASE=${DB_NAME:-laravel_local}
-      - MYSQL_USER=${DB_USER:-phper}
-      - MYSQL_PASSWORD=${DB_PASS:-secret}
-      - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
+      - POSTGRES_DB=${DB_NAME:-laravel_local}
+      - POSTGRES_USER=${DB_USER:-phper}
+      - POSTGRES_PASSWORD=${DB_PASS-secret}
+      - PGDATA=/var/lib/postgresql/data
 
-  #postgres:
-  #  container_name: leopard-postgres
+  #mysql:
+  #  container_name: leopard-mysql
   #  build:
   #    context: .
-  #    dockerfile: ./docker/postgres/Dockerfile
+  #    dockerfile: ./docker/mysql/Dockerfile
   #  ports:
-  #    - target: 5432
-  #      published: ${DB_PORT:-5432}
+  #    - target: 3306
+  #      published: ${DB_PORT:-3306}
   #      protocol: tcp
   #      mode: host
   #  volumes:
   #    - type: volume
-  #      source: postgres-store
-  #      target: /var/lib/postgresql/data
+  #      source: mysql-store
+  #      target: /var/lib/mysql
   #      volume:
   #        nocopy: true
   #  environment:
-  #    - POSTGRES_DB=${DB_NAME:-laravel_local}
-  #    - POSTGRES_USER=${DB_USER:-phper}
-  #    - POSTGRES_PASSWORD=${DB_PASS-secret}
-  #    - PGDATA=/var/lib/postgresql/data
+  #    - MYSQL_DATABASE=${DB_NAME:-laravel_local}
+  #    - MYSQL_USER=${DB_USER:-phper}
+  #    - MYSQL_PASSWORD=${DB_PASS:-secret}
+  #    - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
