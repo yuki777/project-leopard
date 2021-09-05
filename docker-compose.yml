@@ -85,3 +85,14 @@ services:
   #    - MYSQL_USER=${DB_USER:-phper}
   #    - MYSQL_PASSWORD=${DB_PASS:-secret}
   #    - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
+
+  redis:
+    container_name: leopard-redis
+    build:
+      context: .
+      dockerfile: ./docker/redis/Dockerfile
+    ports:
+      - target: 6379
+        published: ${REDIS_PORT:-6379}
+        protocol: tcp
+        mode: host
