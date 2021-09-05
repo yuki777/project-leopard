@@ -1,2 +1,2 @@
-release: /bin/bash release-hook-on-heroku.bash
-web: vendor/bin/heroku-php-nginx -C heroku-php-nginx.conf public/
+release: /bin/bash /app/heroku/release-hook.bash
+web: vendor/bin/heroku-php-nginx -C /app/heroku/nginx.conf public/
