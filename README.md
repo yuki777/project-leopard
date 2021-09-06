@@ -15,9 +15,9 @@
 | Redis         | 6.2.3     |
 
 ## Deployable to Heroku
-- Procfile
-- Release hook
-- Nginx conf
+- [Procfile](Procfile)
+- [Release hook](heroku/release-hook.bash)
+- [Nginx conf](heroku/nginx.conf)
 
 ## Install
 
