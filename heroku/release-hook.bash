@@ -5,6 +5,8 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
+env
+
 if [ "$SLACK_WEBHOOK_URL" ];then
     EMOJI=""
     if [ "$APP_ENV" = "production" ];then
