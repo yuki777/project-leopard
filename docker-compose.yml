@@ -123,6 +123,6 @@ services:
 
   mailhog:
     container_name: leopard-mailhog
-    image: mailhog/mailhog:latest
+    image: cd2team/mailhog:latest
     ports:
       - "8025:8025"
