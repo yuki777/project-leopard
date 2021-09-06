@@ -104,6 +104,17 @@ services:
         soft: -1
         hard: -1
 
+  kibana:
+    container_name: leopard-kibana
+    image: docker.elastic.co/kibana/kibana:7.13.0
+    ports:
+      - "5601:5601"
+    environment:
+      SERVER_NAME: localhost:5601
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+
   redis:
     container_name: leopard-redis
     image: redis:6.2.3-alpine
