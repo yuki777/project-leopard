@@ -49,6 +49,14 @@ RUN pecl install -o -f redis \
   && docker-php-ext-enable redis
 
 #######################################################
+# Node
+#######################################################
+# Node
+RUN apt-get update && apt-get install -y build-essential apt-utils gnupg gcc g++ make \
+  && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+  && apt-get install -y nodejs
+
+#######################################################
 # User
 #######################################################
 RUN useradd -ms /bin/bash docker && adduser docker sudo
