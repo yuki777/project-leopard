@@ -15,6 +15,11 @@
 | Redis         | 6.2.3     |
 
 ## Deployable to Heroku
+- Requirements
+```
+heroku labs:enable runtime-dyno-metadata -a project-lion-staging
+heroku labs:enable runtime-dyno-metadata -a project-lion-production
+```
 - [Procfile](Procfile)
 - [Release hook](heroku/release-hook.bash)
 - [Nginx conf](heroku/nginx.conf)
