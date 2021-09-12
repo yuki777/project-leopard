@@ -20,9 +20,19 @@
 heroku labs:enable runtime-dyno-metadata -a project-leopard-staging
 heroku labs:enable runtime-dyno-metadata -a project-leopard-production
 ```
+- Add buildpack
+  - `heroku/nodejs`
+  - `heroku/php`
+- Add-ons
+  - Heroku Postgres
+  - Heroku Redis
+  - Bonsai Elasticsearch
+  - SMTP(Mailtrap, Sendgrid, etc)
+  - Log(Logtail, LogDNA, etc)
 - [Procfile](Procfile)
 - [Release hook](heroku/release-hook.bash)
 - [Nginx conf](heroku/nginx.conf)
+- [Settings](https://user-images.githubusercontent.com/177159/132989088-f55c261c-456a-49a9-8487-40bf133c14ac.png)
 
 ## Install
 
