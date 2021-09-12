@@ -14,26 +14,6 @@
 | Elasticsearch | 7.13.0    |
 | Redis         | 6.2.3     |
 
-## Deployable to Heroku
-- Requirements
-```
-heroku labs:enable runtime-dyno-metadata -a project-leopard-staging
-heroku labs:enable runtime-dyno-metadata -a project-leopard-production
-```
-- Add buildpack
-  - `heroku/nodejs`
-  - `heroku/php`
-- Add-ons
-  - Heroku Postgres
-  - Heroku Redis
-  - Bonsai Elasticsearch
-  - SMTP(Mailtrap, Sendgrid, etc)
-  - Log(Logtail, LogDNA, etc)
-- [Procfile](Procfile)
-- [Release hook](heroku/release-hook.bash)
-- [Nginx conf](heroku/nginx.conf)
-- [Settings](https://user-images.githubusercontent.com/177159/132989088-f55c261c-456a-49a9-8487-40bf133c14ac.png)
-
 ## Install
 
 ```
@@ -58,3 +38,23 @@ docker exec -u docker -it leopard-php php artisan migrate
 docker exec -u docker -it leopard-php npm install
 docker exec -u docker -it leopard-php npm run watch
 ```
+
+## Heroku deployable
+- Add `runtime-dyno-metadata`
+```
+heroku labs:enable runtime-dyno-metadata -a project-leopard-staging
+heroku labs:enable runtime-dyno-metadata -a project-leopard-production
+```
+- Add buildpack
+  - `heroku/nodejs`
+  - `heroku/php`
+- Add-ons
+  - Heroku Postgres
+  - Heroku Redis
+  - Bonsai Elasticsearch
+  - SMTP(Mailtrap, Sendgrid, etc)
+  - Log(Logtail, LogDNA, etc)
+- [Procfile](Procfile)
+- [Release hook](heroku/release-hook.bash)
+- [Nginx conf](heroku/nginx.conf)
+- [Settings](https://user-images.githubusercontent.com/177159/132989088-f55c261c-456a-49a9-8487-40bf133c14ac.png)
