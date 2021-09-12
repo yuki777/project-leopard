@@ -17,8 +17,8 @@
 ## Deployable to Heroku
 - Requirements
 ```
-heroku labs:enable runtime-dyno-metadata -a project-lion-staging
-heroku labs:enable runtime-dyno-metadata -a project-lion-production
+heroku labs:enable runtime-dyno-metadata -a project-leopard-staging
+heroku labs:enable runtime-dyno-metadata -a project-leopard-production
 ```
 - [Procfile](Procfile)
 - [Release hook](heroku/release-hook.bash)
