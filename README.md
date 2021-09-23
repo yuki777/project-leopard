@@ -51,9 +51,14 @@ heroku labs:enable runtime-dyno-metadata -a project-leopard-production
 - Add-ons
   - Heroku Postgres
   - Heroku Redis
+```
+heroku redis:info -a project-leopard-production
+heroku redis:maxmemory --policy volatile-lru -a project-leopard-production
+heroku redis:info -a project-leopard-production
+```
   - Bonsai Elasticsearch
   - SMTP(Mailtrap, Sendgrid, etc)
-  - Log(Logtail, LogDNA, etc)
+  - Log(Logentries,,, etc)
 - [Procfile](Procfile)
 - [Release hook](heroku/release-hook.bash)
 - [Nginx conf](heroku/nginx.conf)
