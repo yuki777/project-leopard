@@ -12,9 +12,6 @@
         "APP_ENV": {
             "value": "production"
         },
-        "APP_KEY": {
-            "generator": "secret"
-        },
         "APP_NAME": {
             "value": "project-leopard"
         },
