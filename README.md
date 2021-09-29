@@ -10,7 +10,6 @@
 | npm           | 6         |
 | Nginx         | 1.20      |
 | PostgreSQL    | 13.4      |
-| MySQL         | 8.0       |
 | Elasticsearch | 7.13.0    |
 | Redis         | 6.2.3     |
 
@@ -45,6 +44,11 @@ docker exec -u docker -it leopard-php npm run watch
 <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
 
+- Set config
+```
+heroku config:set APP_KEY=$(docker exec -u docker -it leopard-php php artisan --no-ansi key:generate --show) -a APP_NAME
+```
+
 - Add-ons
   - Heroku Postgres
   - Bonsai Elasticsearch
@@ -52,16 +56,13 @@ docker exec -u docker -it leopard-php npm run watch
   - Logentries
   - Heroku Redis
 ```
-heroku redis:info -a project-leopard-production
-heroku redis:maxmemory --policy volatile-lru -a project-leopard-production
-heroku redis:info -a project-leopard-production
+heroku redis:maxmemory --policy volatile-lru -a APP_NAME
 ```
 - Enable runtime-dyno-metadata
 ```
-heroku labs:enable runtime-dyno-metadata -a project-leopard-staging
-heroku labs:enable runtime-dyno-metadata -a project-leopard-production
+heroku labs:enable runtime-dyno-metadata -a APP_NAME
 ```
-- Files
+- Heroku files
     - [app.json](app.json)
     - [Procfile](Procfile)
     - [Release hook](heroku/release-hook.bash)
