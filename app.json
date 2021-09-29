@@ -3,7 +3,7 @@
     "description": "Basic PHP/Laravel application template",
     "repository": "https://github.com/yuki777/project-leopard",
     "scripts": {
-        "postdeploy": "php artisan --no-ansi key:generate; php artisan migrate --force; php artisan config:cache; php artisan route:cache; php artisan view:cache;"
+        "postdeploy": "php artisan migrate --force; php artisan config:cache; php artisan route:cache; php artisan view:cache;"
     },
     "env": {
         "APP_DEBUG": {
@@ -11,6 +11,9 @@
         },
         "APP_ENV": {
             "value": "production"
+        },
+        "APP_KEY": {
+            "generator": "secret"
         },
         "APP_NAME": {
             "value": "project-leopard"
