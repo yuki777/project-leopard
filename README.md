@@ -15,6 +15,12 @@
 | Redis         | 6.2.3     |
 
 ## Deployable to Heroku
+
+<a href="https://heroku.com/deploy?template=https://github.com/yuki777/project-leopard">
+<img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
+</a>
+
+- [app.json](app.json)
 - [Procfile](Procfile)
 - [Release hook](heroku/release-hook.bash)
 - [Nginx conf](heroku/nginx.conf)

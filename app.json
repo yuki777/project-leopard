@@ -1,0 +1,68 @@
+{
+    "name": "project-leopard",
+    "description": "Basic PHP/Laravel application template",
+    "repository": "https://github.com/yuki777/project-leopard",
+    "scripts": {
+        "postdeploy": [
+            "php artisan --no-ansi key:generate",
+            "php artisan migrate --force",
+            "php artisan config:cache",
+            "php artisan route:cache",
+            "php artisan view:cache"
+        ]
+    },
+    "env": {
+        "APP_DEBUG": {
+            "value": "false"
+        },
+        "APP_ENV": {
+            "value": "production"
+        },
+        "APP_NAME": {
+            "value": "project-leopard"
+        },
+        "CACHE_DRIVER": {
+            "value": "redis"
+        },
+        "DB_CONNECTION": {
+            "value": "pgsql"
+        },
+        "LOG_CHANNEL": {
+            "value": "errorlog"
+        },
+        "LOG_LEVEL": {
+            "value": "debug"
+        },
+        "SESSION_DRIVER": {
+            "value": "redis"
+        },
+        "SESSION_LIFETIME": {
+            "value": "120"
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+        },
+        {
+            "url": "https://github.com/heroku/heroku-buildpack-php"
+        }
+    ],
+    "addons": [
+        {
+            "plan": "heroku-postgresql:hobby-dev"
+        },
+        {
+            "plan": "heroku-redis:hobby-dev"
+        },
+        {
+            "plan": "bonsai:sandbox-6"
+        },
+        {
+            "plan": "logentries:le_tryit"
+        },
+        {
+            "plan": "mailtrap:unpaid"
+        }
+    ]
+}
