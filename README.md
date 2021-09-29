@@ -40,6 +40,11 @@ docker exec -u docker -it leopard-php npm run watch
 ```
 
 ## Heroku deployable
+
+<a href="https://heroku.com/deploy?template=https://github.com/yuki777/project-leopard">
+<img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
+</a>
+
 - Add `runtime-dyno-metadata`
 ```
 heroku labs:enable runtime-dyno-metadata -a project-leopard-staging
@@ -59,6 +64,7 @@ heroku redis:info -a project-leopard-production
   - Bonsai Elasticsearch
   - SMTP(Mailtrap, Sendgrid, etc)
   - Log(Logentries,,, etc)
+- [app.json](app.json)
 - [Procfile](Procfile)
 - [Release hook](heroku/release-hook.bash)
 - [Nginx conf](heroku/nginx.conf)
