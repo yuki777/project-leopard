@@ -31,7 +31,7 @@ docker exec -u docker -it leopard-php composer install
 docker exec -u docker -it leopard-php php artisan migrate
 
 # Make key
- docker exec -u docker -it lion-php php artisan key:generate
+ docker exec -u docker -it leopard-php php artisan key:generate
 
 # Front install and watch
 docker exec -u docker -it leopard-php npm install
